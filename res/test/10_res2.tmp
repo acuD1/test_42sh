@@ -1,0 +1,51 @@
+=================================================================
+==25192==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000106574890 at pc 0x0001064e93ed bp 0x7ffee971de10 sp 0x7ffee971de08
+READ of size 8 at 0x000106574890 thread T0
+    #0 0x1064e93ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    #1 0x1064e86c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    #2 0x1064e80e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    #3 0x106518034 in call_builtin (42sh:x86_64+0x100037034)
+    #4 0x10652ec4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    #5 0x1065182dc in launch_job (42sh:x86_64+0x1000372dc)
+    #6 0x10651c53e in handle_background_job (42sh:x86_64+0x10003b53e)
+    #7 0x10651bf8c in task_master (42sh:x86_64+0x10003af8c)
+    #8 0x10651209f in load_noi_mode (42sh:x86_64+0x10003109f)
+    #9 0x106511daf in main (42sh:x86_64+0x100030daf)
+    #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+
+0x000106574890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x1065748c0) of size 24
+0x000106574890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x1065747e0) of size 176
+SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+Shadow bytes around the buggy address:
+  0x100020cae8c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100020cae8d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100020cae8e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100020cae8f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100020cae900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x100020cae910: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+  0x100020cae920: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x100020cae930: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+  0x100020cae940: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+  0x100020cae950: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100020cae960: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==25192==ABORTING

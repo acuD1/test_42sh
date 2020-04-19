@@ -1,0 +1,1206 @@
+[0;33m[...][0m	: aggreg/01[1A
+[K[0;32m[OK][0m	: aggreg/01
+[0;33m[...][0m	: aggreg/02[1A
+[K[0;32m[OK][0m	: aggreg/02
+[0;33m[...][0m	: aggreg/03[1A
+[K[0;32m[OK][0m	: aggreg/03
+[0;33m[...][0m	: aggreg/04[1A
+[K[0;32m[OK][0m	: aggreg/04
+[0;33m[...][0m	: aggreg/06[1A
+[K[0;32m[OK][0m	: aggreg/06
+[0;33m[...][0m	: backslash/1[1A
+[K[0;32m[OK][0m	: backslash/1
+[0;33m[...][0m	: backslash/2[1A
+[K[0;32m[OK][0m	: backslash/2
+[0;33m[...][0m	: backslash/3[1A
+[K[0;32m[OK][0m	: backslash/3
+[0;33m[...][0m	: backslash/4[1A
+[K[0;32m[OK][0m	: backslash/4
+[0;33m[...][0m	: backslash/5[1A
+[K[0;32m[OK][0m	: backslash/5
+[0;33m[...][0m	: backslash/6[1A
+[K[0;32m[OK][0m	: backslash/6
+[0;33m[...][0m	: backslash/7[1A
+[K[0;32m[OK][0m	: backslash/7
+[0;33m[...][0m	: cd/0[1A
+[K[0;32m[OK][0m	: cd/0
+[0;33m[...][0m	: cd/1[1A
+[K[0;32m[OK][0m	: cd/1
+[0;33m[...][0m	: cd/2[1A
+[K[0;32m[OK][0m	: cd/2
+[0;33m[...][0m	: cd/3[1A
+[K[0;32m[OK][0m	: cd/3
+[0;33m[...][0m	: cd/4[1A
+[K[0;32m[OK][0m	: cd/4
+[0;33m[...][0m	: cd/5[1A
+[K[0;32m[OK][0m	: cd/5
+[0;33m[...][0m	: cd/6[1A
+[K[0;32m[OK][0m	: cd/6
+[0;33m[...][0m	: cd/7[1A
+[K[0;32m[OK][0m	: cd/7
+[0;33m[...][0m	: cd/8[1A
+[K[1;31m[KO][0m	: cd/8
+    cd . .
+[0;37m[0;35m    1d0
+    < bash: line 1: cd: too many arguments
+[0;36m    bash --posix retuned 1
+    /Users/arsciand/42/42sh/42sh retured 0
+[0;34m[0m[0;33m[...][0m	: double_quote/0[1A
+[K[0;32m[OK][0m	: double_quote/0
+[0;33m[...][0m	: double_quote/00[1A
+[K[0;32m[OK][0m	: double_quote/00
+[0;33m[...][0m	: double_quote/01[1A
+[K[0;32m[OK][0m	: double_quote/01
+[0;33m[...][0m	: double_quote/02[1A
+[K[1;31m[KO][0m	: double_quote/02
+    echo "coucou    les 	amis c'est formidable $HOME"
+    TOI=toi;POINTDINTEROGATION=?;echo "puta*** j'ai faim !!" "pas $TOI $POINTDINTEROGATION"
+[0;37m    2c2
+    < puta*** j'ai faim !! pas toi ?
+    ---
+    > puta*** j'ai faim !! pas TOI POINTDINTEROGATION
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: double_quote/03[1A
+[K[0;32m[OK][0m	: double_quote/03
+[0;33m[...][0m	: double_quote/04[1A
+[K[0;32m[OK][0m	: double_quote/04
+[0;33m[...][0m	: double_quote/05[1A
+[K[0;32m[OK][0m	: double_quote/05
+[0;33m[...][0m	: double_quote/07[1A
+[K[0;32m[OK][0m	: double_quote/07
+[0;33m[...][0m	: double_quote/08[1A
+[K[0;32m[OK][0m	: double_quote/08
+[0;33m[...][0m	: double_quote/09[1A
+[K[0;32m[OK][0m	: double_quote/09
+[0;33m[...][0m	: double_quote/10[1A
+[K[1;31m[KO][0m	: double_quote/10
+    echo "'foo\
+    bar'
+    baz" | cat -e
+    echo "foo\
+    bar" | cat -e
+    echo 'foo\
+    bar' | cat -e
+    l\
+    s \
+    -at
+[0;37m    1,7d0
+    < 'foobar'$
+    < baz$
+    < foobar$
+    < foo\$
+    < bar$
+    < .
+    < ..
+[0;35m    0a1,58
+    > =================================================================
+    > ==22577==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000c9c at pc 0x0001050e0e71 bp 0x7ffeeab7ad30 sp 0x7ffeeab7ad28
+    > READ of size 1 at 0x602000000c9c thread T0
+    >     #0 0x1050e0e70 in loop_till_next_quote (42sh:x86_64+0x10005ce70)
+    >     #1 0x1050e0504 in check_all_quotes (42sh:x86_64+0x10005c504)
+    >     #2 0x1050dffa0 in get_word_size_ntype (42sh:x86_64+0x10005bfa0)
+    >     #3 0x1050e0935 in word_lexer (42sh:x86_64+0x10005c935)
+    >     #4 0x1050e06d9 in name_lexer (42sh:x86_64+0x10005c6d9)
+    >     #5 0x1050dfaa7 in lexer (42sh:x86_64+0x10005baa7)
+    >     #6 0x1050d46c0 in lexer_parser_analyzer (42sh:x86_64+0x1000506c0)
+    >     #7 0x1050b5096 in load_noi_mode (42sh:x86_64+0x100031096)
+    >     #8 0x1050b4daf in main (42sh:x86_64+0x100030daf)
+    >     #9 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x602000000c9c is located 0 bytes to the right of 12-byte region [0x602000000c90,0x602000000c9c)
+    > allocated by thread T0 here:
+    >     #0 0x105db6143 in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x59143)
+    >     #1 0x1050e9713 in ft_memalloc (42sh:x86_64+0x100065713)
+    >     #2 0x1050ec129 in ft_strsub (42sh:x86_64+0x100068129)
+    >     #3 0x1050e6e37 in ft_getnextline (42sh:x86_64+0x100062e37)
+    >     #4 0x1050b4f08 in load_noi_mode (42sh:x86_64+0x100030f08)
+    >     #5 0x1050b4daf in main (42sh:x86_64+0x100030daf)
+    >     #6 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > SUMMARY: AddressSanitizer: heap-buffer-overflow (42sh:x86_64+0x10005ce70) in loop_till_next_quote
+    > Shadow bytes around the buggy address:
+    >   0x1c0400000140: fa fa 02 fa fa fa 02 fa fa fa fd fa fa fa 06 fa
+    >   0x1c0400000150: fa fa 02 fa fa fa fd fa fa fa 05 fa fa fa 02 fa
+    >   0x1c0400000160: fa fa fd fa fa fa 06 fa fa fa 02 fa fa fa fd fa
+    >   0x1c0400000170: fa fa 02 fa fa fa 04 fa fa fa fd fa fa fa 00 05
+    >   0x1c0400000180: fa fa 04 fa fa fa fd fa fa fa 05 fa fa fa fd fa
+    > =>0x1c0400000190: fa fa 00[04]fa fa fd fa fa fa 05 fa fa fa fa fa
+    >   0x1c04000001a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==22577==ABORTING
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: echo/0[1A
+[K[0;32m[OK][0m	: echo/0
+[0;33m[...][0m	: echo/00[1A
+[K[1;31m[KO][0m	: echo/00
+    	echo 	coucou 	les 	amis	
+    echo -n LAUL
+    echo -- -n
+    echo -n -- -- --
+    echo -- -- 
+    echo 
+     
+[0;37m    2,3c2,5
+    < LAUL-- -n
+    < -- -- ---- --
+    ---
+    > -n LAUL
+    > -- -n
+    > -n -- -- --
+    > -- --
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: echo/01[1A
+[K[0;32m[OK][0m	: echo/01
+[0;33m[...][0m	: echo/02[1A
+[K[0;32m[OK][0m	: echo/02
+[0;33m[...][0m	: exit/0[1A
+[K[0;32m[OK][0m	: exit/0
+[0;33m[...][0m	: exit/00[1A
+[K[0;32m[OK][0m	: exit/00
+[0;33m[...][0m	: exit/01[1A
+[K[0;32m[OK][0m	: exit/01
+[0;33m[...][0m	: exit/02[1A
+[K[0;32m[OK][0m	: exit/02
+[0;33m[...][0m	: exit/03[1A
+[K[0;32m[OK][0m	: exit/03
+[0;33m[...][0m	: exit/04[1A
+[K[0;32m[OK][0m	: exit/04
+[0;33m[...][0m	: exit/05[1A
+[K[0;32m[OK][0m	: exit/05
+[0;33m[...][0m	: exit/06[1A
+[K[0;32m[OK][0m	: exit/06
+[0;33m[...][0m	: exit/07[1A
+[K[0;32m[OK][0m	: exit/07
+[0;33m[...][0m	: exit/08[1A
+[K[0;32m[OK][0m	: exit/08
+[0;33m[...][0m	: expand/0[1A
+[K[0;32m[OK][0m	: expand/0
+[0;33m[...][0m	: expand/00[1A
+[K[0;32m[OK][0m	: expand/00
+[0;33m[...][0m	: expand/01[1A
+[K[0;32m[OK][0m	: expand/01
+[0;33m[...][0m	: expand/010[1A
+[K[0;32m[OK][0m	: expand/010
+[0;33m[...][0m	: expand/011[1A
+[K[0;32m[OK][0m	: expand/011
+[0;33m[...][0m	: expand/012[1A
+[K[0;32m[OK][0m	: expand/012
+[0;33m[...][0m	: expand/013[1A
+[K[0;32m[OK][0m	: expand/013
+[0;33m[...][0m	: expand/014[1A
+[K[0;32m[OK][0m	: expand/014
+[0;33m[...][0m	: expand/015[1A
+[K[1;31m[KO][0m	: expand/015
+    cd $HOME && pwd && FILE='..' && ls $FILE
+[0;37m    2,53d1
+    < Shared
+    < abeauvoi
+    < achirat
+    < aclement
+    < adejbakh
+    < alecasti
+    < allemonn
+    < amouicho
+    < arsciand
+    < aseo
+    < bafraiki
+    < bdevessi
+    < bocal
+    < cbretagn
+    < cchudant
+    < cduverge
+    < cfauvell
+    < chray
+    < clandolf
+    < cmarteau
+    < deepthought
+    < eparisot
+    < esommier
+    < event
+    < fdagbert
+    < fdidelot
+    < fmiraill
+    < frameton
+    < gaerhard
+    < gkoechli
+    < hben-yah
+    < iambayra
+    < jemarcia
+    < jmercier
+    < kicausse
+    < llelievr
+    < lmontagn
+    < lomasse
+    < mamaquig
+    < mle-faou
+    < mpivet-p
+    < ncolomer
+    < paim
+    < pcamaren
+    < pguillie
+    < psentilh
+    < ptruffau
+    < sachetri
+    < sadahan
+    < viclucas
+    < vmarchet
+    < yaitalla
+[0;35m    0a1
+    > ls: FILE: No such file or directory
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 1
+[0;34m[0m[0;33m[...][0m	: expand/016[1A
+[K[0;32m[OK][0m	: expand/016
+[0;33m[...][0m	: expand/017[1A
+[K[0;32m[OK][0m	: expand/017
+[0;33m[...][0m	: expand/018[1A
+[K[0;32m[OK][0m	: expand/018
+[0;33m[...][0m	: expand/019[1A
+[K[0;32m[OK][0m	: expand/019
+[0;33m[...][0m	: expand/02[1A
+[K[0;32m[OK][0m	: expand/02
+[0;33m[...][0m	: expand/020[1A
+[K[0;32m[OK][0m	: expand/020
+[0;33m[...][0m	: expand/021[1A
+[K[0;32m[OK][0m	: expand/021
+[0;33m[...][0m	: expand/022[1A
+[K[0;32m[OK][0m	: expand/022
+[0;33m[...][0m	: expand/023[1A
+[K[0;32m[OK][0m	: expand/023
+[0;33m[...][0m	: expand/024[1A
+[K[0;32m[OK][0m	: expand/024
+[0;33m[...][0m	: expand/025[1A
+[K[0;32m[OK][0m	: expand/025
+[0;33m[...][0m	: expand/026[1A
+[K[0;32m[OK][0m	: expand/026
+[0;33m[...][0m	: expand/027[1A
+[K[0;32m[OK][0m	: expand/027
+[0;33m[...][0m	: expand/028[1A
+[K[0;32m[OK][0m	: expand/028
+[0;33m[...][0m	: expand/029[1A
+[K[0;32m[OK][0m	: expand/029
+[0;33m[...][0m	: expand/03[1A
+[K[0;32m[OK][0m	: expand/03
+[0;33m[...][0m	: expand/030[1A
+[K[0;32m[OK][0m	: expand/030
+[0;33m[...][0m	: expand/031[1A
+[K[1;31m[KO][0m	: expand/031
+    unset HOME && cd / && cd ~;pwd
+[0;37m    1c1
+    < /Users/arsciand
+    ---
+    > /
+[0;35m    0a1
+    > 42sh: cd: HOME not set
+[0;36m[0;34m[0m[0;33m[...][0m	: expand/032[1A
+[K[0;32m[OK][0m	: expand/032
+[0;33m[...][0m	: expand/033[1A
+[K[0;32m[OK][0m	: expand/033
+[0;33m[...][0m	: expand/034[1A
+[K[0;32m[OK][0m	: expand/034
+[0;33m[...][0m	: expand/035[1A
+[K[0;32m[OK][0m	: expand/035
+[0;33m[...][0m	: expand/036[1A
+[K[0;32m[OK][0m	: expand/036
+[0;33m[...][0m	: expand/037[1A
+[K[1;31m[KO][0m	: expand/037
+    unset foo 2>&-; echo ${foo:?bar}
+[0;37m    0a1
+    > 
+[0;35m    1c1
+    < bash: line 1: foo: bar
+    ---
+    > 42sh: foo: bar
+[0;36m    bash --posix retuned 1
+    /Users/arsciand/42/42sh/42sh retured 0
+[0;34m[0m[0;33m[...][0m	: expand/038[1A
+[K[0;32m[OK][0m	: expand/038
+[0;33m[...][0m	: expand/039[1A
+[K[0;32m[OK][0m	: expand/039
+[0;33m[...][0m	: expand/04[1A
+[K[0;32m[OK][0m	: expand/04
+[0;33m[...][0m	: expand/040[1A
+[K[0;32m[OK][0m	: expand/040
+[0;33m[...][0m	: expand/041[1A
+[K[0;32m[OK][0m	: expand/041
+[0;33m[...][0m	: expand/042[1A
+[K[1;31m[KO][0m	: expand/042
+    foo=foobarfoo; echo ${foo%foo}
+    t=aabbcc123; echo ${t#*2} ${t#2*} ${t#*bb*} ${t#*a*}
+    echo ${t%%fo*} ${t##123} ${t%%123} ${t%%$PATH} ${t%%${t##aa}} 
+[0;37m    1,3c1,3
+    < foobar
+    < 3 aabbcc123 cc123 abbcc123
+    < aabbcc123 aabbcc123 aabbcc aabbcc123 aa
+    ---
+    > 
+    > t t t t
+    > t t t t
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: expand/043[1A
+[K[1;31m[KO][0m	: expand/043
+    foo=foobarfoo; echo ${foo%%o*}
+[0;37m    1c1
+    < f
+    ---
+    > foo
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: expand/044[1A
+[K[1;31m[KO][0m	: expand/044
+    NEWPATH=$PATH:$HOME/.bin; echo ${NEWPATH#"$PATH:$HOME/"}
+[0;37m    1c1
+    < .bin
+    ---
+    > NEWPATH
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: expand/045[1A
+[K[1;31m[KO][0m	: expand/045
+    x=/one/two/three; echo ${x##*/}
+    t=a........................................z;echo ${t%%*.*}
+[0;37m    1,2c1,2
+    < three
+    < 
+    ---
+    > x
+    > t
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: expand/05[1A
+[K[0;32m[OK][0m	: expand/05
+[0;33m[...][0m	: expand/06[1A
+[K[0;32m[OK][0m	: expand/06
+[0;33m[...][0m	: expand/07[1A
+[K[0;32m[OK][0m	: expand/07
+[0;33m[...][0m	: expand/08[1A
+[K[0;32m[OK][0m	: expand/08
+[0;33m[...][0m	: expand/09[1A
+[K[0;32m[OK][0m	: expand/09
+[0;33m[...][0m	: export/01[1A
+[K[0;32m[OK][0m	: export/01
+[0;33m[...][0m	: export/02[1A
+[K[1;31m[KO][0m	: export/02
+    export testad=test
+    testad=LALAL
+    env | grep testad
+[0;37m    1c1
+    < testad=LALAL
+    ---
+    > testad=testad
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: export/03[1A
+[K[0;32m[OK][0m	: export/03
+[0;33m[...][0m	: export/04[1A
+[K[0;32m[OK][0m	: export/04
+[0;33m[...][0m	: export/05[1A
+[K[1;31m[KO][0m	: export/05
+    lalala=popopo;echo $lalala
+[0;37m    1c1
+    < popopo
+    ---
+    > lalala
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: export/06[1A
+[K[0;32m[OK][0m	: export/06
+[0;33m[...][0m	: export/07[1A
+[K[1;31m[KO][0m	: export/07
+    TOKEN201904101813=POPO
+    export "HOME=/$TOKEN201904101813"
+    TOKEN201904101813=~
+    echo $HOME
+[0;37m    1c1
+    < /POPO
+    ---
+    > /TOKEN201904101813
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: export/08[1A
+[K[0;32m[OK][0m	: export/08
+[0;33m[...][0m	: export/09[1A
+[K[0;32m[OK][0m	: export/09
+[0;33m[...][0m	: export/10[1A
+[K[0;32m[OK][0m	: export/10
+[0;33m[...][0m	: export/11[1A
+[K[0;32m[OK][0m	: export/11
+[0;33m[...][0m	: export/12[1A
+[K[0;32m[OK][0m	: export/12
+[0;33m[...][0m	: export/13[1A
+[K[0;32m[OK][0m	: export/13
+[0;33m[...][0m	: export/14[1A
+[K[0;32m[OK][0m	: export/14
+[0;33m[...][0m	: export/15[1A
+[K[0;32m[OK][0m	: export/15
+[0;33m[...][0m	: export/16[1A
+[K[1;31m[KO][0m	: export/16
+    test16=testabs
+    export test16
+    env | grep test16
+[0;37m    1c1
+    < test16=testabs
+    ---
+    > test16=test16
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: export/17[1A
+[K[0;32m[OK][0m	: export/17
+[0;33m[...][0m	: fc/01[1A
+[K[1;31m[KO][0m	: fc/01
+    fc -e vim f5sd6 fds564
+[0;37m[0;35m    0a1
+    > 42sh: fc: no command found
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 255
+[0;34m[0m[0;33m[...][0m	: fc/02[1A
+[K[1;31m[KO][0m	: fc/02
+    fc -e gdfgfg
+[0;37m[0;35m    0a1
+    > 42sh: fc: no command found
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 255
+[0;34m[0m[0;33m[...][0m	: fc/03[1A
+[K[1;31m[KO][0m	: fc/03
+    fc -s 5
+[0;37m[0;35m    1c1
+    < bash: line 1: fc: no command found
+    ---
+    > 42sh: fc: no command found
+[0;36m    bash --posix retuned 1
+    /Users/arsciand/42/42sh/42sh retured 255
+[0;34m[0m[0;33m[...][0m	: fc/04[1A
+[K[1;31m[KO][0m	: fc/04
+    fc -k 1 2 3
+[0;37m[0;35m    1,2c1
+    < bash: line 1: fc: -k: invalid option
+    < fc: usage: fc [-e ename] [-lnr] [first] [last] or fc -s [pat=rep] [command]
+    ---
+    > 42sh: fc: no command found
+[0;36m    bash --posix retuned 2
+    /Users/arsciand/42/42sh/42sh retured 255
+[0;34m[0m[0;33m[...][0m	: hard/1[1A
+[K[0;32m[OK][0m	: hard/1
+[0;33m[...][0m	: hash/01[1A
+[K[0;32m[OK][0m	: hash/01
+[0;33m[...][0m	: hash/02[1A
+[K[0;32m[OK][0m	: hash/02
+[0;33m[...][0m	: hash/03[1A
+[K[0;32m[OK][0m	: hash/03
+[0;33m[...][0m	: hash/04[1A
+[K[0;32m[OK][0m	: hash/04
+[0;33m[...][0m	: mixed_commands/01[1A
+[K[1;31m[KO][0m	: mixed_commands/01
+    cd /tmp; cat << k > file; cd -; cat < /tmp/file | sed -e 's/L/00/g' > /tmp/newfile; cat < /tmp/newfile
+    LaLaLa
+    test
+    test2
+    k
+[0;37m    2,4d1
+    < 00a00a00a
+    < test
+    < test2
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: mixed_commands/02[1A
+[K[1;31m[KO][0m	: mixed_commands/02
+    mkdir tmpdir ; cd tmpdir ; ls -a ; ls | cat | wc -c > fifi ; cat fifi; cd ..; rm -rf tmpdir
+[0;37m    3d2
+    <        5
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: multi_command/0[1A
+[K[0;32m[OK][0m	: multi_command/0
+[0;33m[...][0m	: multi_command/00[1A
+[K[0;32m[OK][0m	: multi_command/00
+[0;33m[...][0m	: multi_command/01[1A
+[K[0;32m[OK][0m	: multi_command/01
+[0;33m[...][0m	: multi_command/02[1A
+[K[1;31m[KO][0m	: multi_command/02
+    echo coucou;ls;ls
+    echo -- -n
+    ; echo 
+[0;37m    2a3
+    > 42sh: syntax error near unexpected token `;'
+[0;35m    1,2d0
+    < bash: line 3: syntax error near unexpected token `;'
+    < bash: line 3: `; echo '
+[0;36m[0;34m[0m[0;33m[...][0m	: multi_command/03[1A
+[K[0;32m[OK][0m	: multi_command/03
+[0;33m[...][0m	: multi_command/04[1A
+[K[0;32m[OK][0m	: multi_command/04
+[0;33m[...][0m	: multi_command/05[1A
+[K[0;32m[OK][0m	: multi_command/05
+[0;33m[...][0m	: multiline/0[1A
+[K[0;32m[OK][0m	: multiline/0
+[0;33m[...][0m	: multiline/00[1A
+[K[1;31m[KO][0m	: multiline/00
+    echo "\
+    coucou \
+    ls \
+    amis"
+[0;37m    1d0
+    < coucou ls amis
+[0;35m    0a1,58
+    > =================================================================
+    > ==23855==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000c98 at pc 0x000105dbde71 bp 0x7ffee9e9dd30 sp 0x7ffee9e9dd28
+    > READ of size 1 at 0x602000000c98 thread T0
+    >     #0 0x105dbde70 in loop_till_next_quote (42sh:x86_64+0x10005ce70)
+    >     #1 0x105dbd504 in check_all_quotes (42sh:x86_64+0x10005c504)
+    >     #2 0x105dbcfa0 in get_word_size_ntype (42sh:x86_64+0x10005bfa0)
+    >     #3 0x105dbd935 in word_lexer (42sh:x86_64+0x10005c935)
+    >     #4 0x105dbd6d9 in name_lexer (42sh:x86_64+0x10005c6d9)
+    >     #5 0x105dbcaa7 in lexer (42sh:x86_64+0x10005baa7)
+    >     #6 0x105db16c0 in lexer_parser_analyzer (42sh:x86_64+0x1000506c0)
+    >     #7 0x105d92096 in load_noi_mode (42sh:x86_64+0x100031096)
+    >     #8 0x105d91daf in main (42sh:x86_64+0x100030daf)
+    >     #9 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x602000000c98 is located 0 bytes to the right of 8-byte region [0x602000000c90,0x602000000c98)
+    > allocated by thread T0 here:
+    >     #0 0x105e6e143 in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x59143)
+    >     #1 0x105dc6713 in ft_memalloc (42sh:x86_64+0x100065713)
+    >     #2 0x105dc9129 in ft_strsub (42sh:x86_64+0x100068129)
+    >     #3 0x105dc3e37 in ft_getnextline (42sh:x86_64+0x100062e37)
+    >     #4 0x105d91f08 in load_noi_mode (42sh:x86_64+0x100030f08)
+    >     #5 0x105d91daf in main (42sh:x86_64+0x100030daf)
+    >     #6 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > SUMMARY: AddressSanitizer: heap-buffer-overflow (42sh:x86_64+0x10005ce70) in loop_till_next_quote
+    > Shadow bytes around the buggy address:
+    >   0x1c0400000140: fa fa 02 fa fa fa 02 fa fa fa fd fa fa fa 06 fa
+    >   0x1c0400000150: fa fa 02 fa fa fa fd fa fa fa 05 fa fa fa 02 fa
+    >   0x1c0400000160: fa fa fd fa fa fa 06 fa fa fa 02 fa fa fa fd fa
+    >   0x1c0400000170: fa fa 02 fa fa fa 04 fa fa fa fd fa fa fa 00 05
+    >   0x1c0400000180: fa fa 04 fa fa fa fd fa fa fa 05 fa fa fa fd fa
+    > =>0x1c0400000190: fa fa 00[fa]fa fa fd fa fa fa 05 fa fa fa fa fa
+    >   0x1c04000001a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==23855==ABORTING
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: multiline/01[1A
+[K[1;31m[KO][0m	: multiline/01
+    echo "\
+    coucou \
+    ls \
+    amis"
+[0;37m    1d0
+    < coucou ls amis
+[0;35m    0a1,58
+    > =================================================================
+    > ==23877==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000c98 at pc 0x000108523e71 bp 0x7ffee7737d30 sp 0x7ffee7737d28
+    > READ of size 1 at 0x602000000c98 thread T0
+    >     #0 0x108523e70 in loop_till_next_quote (42sh:x86_64+0x10005ce70)
+    >     #1 0x108523504 in check_all_quotes (42sh:x86_64+0x10005c504)
+    >     #2 0x108522fa0 in get_word_size_ntype (42sh:x86_64+0x10005bfa0)
+    >     #3 0x108523935 in word_lexer (42sh:x86_64+0x10005c935)
+    >     #4 0x1085236d9 in name_lexer (42sh:x86_64+0x10005c6d9)
+    >     #5 0x108522aa7 in lexer (42sh:x86_64+0x10005baa7)
+    >     #6 0x1085176c0 in lexer_parser_analyzer (42sh:x86_64+0x1000506c0)
+    >     #7 0x1084f8096 in load_noi_mode (42sh:x86_64+0x100031096)
+    >     #8 0x1084f7daf in main (42sh:x86_64+0x100030daf)
+    >     #9 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x602000000c98 is located 0 bytes to the right of 8-byte region [0x602000000c90,0x602000000c98)
+    > allocated by thread T0 here:
+    >     #0 0x1085d8143 in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x59143)
+    >     #1 0x10852c713 in ft_memalloc (42sh:x86_64+0x100065713)
+    >     #2 0x10852f129 in ft_strsub (42sh:x86_64+0x100068129)
+    >     #3 0x108529e37 in ft_getnextline (42sh:x86_64+0x100062e37)
+    >     #4 0x1084f7f08 in load_noi_mode (42sh:x86_64+0x100030f08)
+    >     #5 0x1084f7daf in main (42sh:x86_64+0x100030daf)
+    >     #6 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > SUMMARY: AddressSanitizer: heap-buffer-overflow (42sh:x86_64+0x10005ce70) in loop_till_next_quote
+    > Shadow bytes around the buggy address:
+    >   0x1c0400000140: fa fa 02 fa fa fa 02 fa fa fa fd fa fa fa 06 fa
+    >   0x1c0400000150: fa fa 02 fa fa fa fd fa fa fa 05 fa fa fa 02 fa
+    >   0x1c0400000160: fa fa fd fa fa fa 06 fa fa fa 02 fa fa fa fd fa
+    >   0x1c0400000170: fa fa 02 fa fa fa 04 fa fa fa fd fa fa fa 00 05
+    >   0x1c0400000180: fa fa 04 fa fa fa fd fa fa fa 05 fa fa fa fd fa
+    > =>0x1c0400000190: fa fa 00[fa]fa fa fd fa fa fa 05 fa fa fa fa fa
+    >   0x1c04000001a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    >   0x1c04000001e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==23877==ABORTING
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: multiline/02[1A
+[K[1;31m[KO][0m	: multiline/02
+    echo \
+    	; ls \
+    			; pwd \
+    		; cd ; pwd
+[0;37m    2,3c2,4
+    < /Users/arsciand/42/42sh/test/tmp
+    < /Users/arsciand
+    ---
+    > 42sh: syntax error near unexpected token `;'
+    > 42sh: syntax error near unexpected token `;'
+    > 42sh: syntax error near unexpected token `;'
+[0;35m[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 2
+[0;34m[0m[0;33m[...][0m	: pipe/01[1A
+[K[0;32m[OK][0m	: pipe/01
+[0;33m[...][0m	: pipe/02[1A
+[K[0;32m[OK][0m	: pipe/02
+[0;33m[...][0m	: pipe/03[1A
+[K[1;31m[KO][0m	: pipe/03
+    | grep
+[0;37m    0a1
+    > 42sh: syntax error near unexpected token `|'
+[0;35m    1,2d0
+    < bash: line 1: syntax error near unexpected token `|'
+    < bash: line 1: `| grep'
+[0;36m[0;34m[0m[0;33m[...][0m	: pipe/04[1A
+[K[0;32m[OK][0m	: pipe/04
+[0;33m[...][0m	: pipe/05[1A
+[K[0;32m[OK][0m	: pipe/05
+[0;33m[...][0m	: pipe/07[1A
+[K[0;32m[OK][0m	: pipe/07
+[0;33m[...][0m	: pipe/08[1A
+[K[0;32m[OK][0m	: pipe/08
+[0;33m[...][0m	: redirections/01[1A
+[K[1;31m[KO][0m	: redirections/01
+    ls > k.tmp
+[0;37m[0;35m[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 1
+[0;34m[0m[0;33m[...][0m	: redirections/02[1A
+[K[1;31m[KO][0m	: redirections/02
+    ls >> k.tmp
+[0;37m[0;35m[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 1
+[0;34m[0m[0;33m[...][0m	: redirections/03[1A
+[K[1;31m[KO][0m	: redirections/03
+    ls >>
+[0;37m    0a1
+    > 42sh: syntax error near unexpected token `newline'
+[0;35m    1,2d0
+    < bash: line 1: syntax error near unexpected token `newline'
+    < bash: line 1: `ls >>'
+[0;36m[0;34m[0m[0;33m[...][0m	: redirections/04[1A
+[K[0;32m[OK][0m	: redirections/04
+[0;33m[...][0m	: signal/0[1A
+[K[0;32m[OK][0m	: signal/0
+[0;33m[...][0m	: signal/01[1A
+[K[0;32m[OK][0m	: signal/01
+[0;33m[...][0m	: signal/010[1A
+[K[0;32m[OK][0m	: signal/010
+[0;33m[...][0m	: signal/011[1A
+[K[0;32m[OK][0m	: signal/011
+[0;33m[...][0m	: signal/012[1A
+[K[0;32m[OK][0m	: signal/012
+[0;33m[...][0m	: signal/013[1A
+[K[0;32m[OK][0m	: signal/013
+[0;33m[...][0m	: signal/014[1A
+[K[0;32m[OK][0m	: signal/014
+[0;33m[...][0m	: signal/015[1A
+[K[0;32m[OK][0m	: signal/015
+[0;33m[...][0m	: signal/016[1A
+[K[0;32m[OK][0m	: signal/016
+[0;33m[...][0m	: signal/017[1A
+[K[0;32m[OK][0m	: signal/017
+[0;33m[...][0m	: signal/018[1A
+[K[0;32m[OK][0m	: signal/018
+[0;33m[...][0m	: signal/019[1A
+[K[0;32m[OK][0m	: signal/019
+[0;33m[...][0m	: signal/02[1A
+[K[0;32m[OK][0m	: signal/02
+[0;33m[...][0m	: signal/03[1A
+[K[0;32m[OK][0m	: signal/03
+[0;33m[...][0m	: signal/04[1A
+[K[0;32m[OK][0m	: signal/04
+[0;33m[...][0m	: signal/05[1A
+[K[0;32m[OK][0m	: signal/05
+[0;33m[...][0m	: signal/06[1A
+[K[0;32m[OK][0m	: signal/06
+[0;33m[...][0m	: signal/07[1A
+[K[0;32m[OK][0m	: signal/07
+[0;33m[...][0m	: signal/08[1A
+[K[0;32m[OK][0m	: signal/08
+[0;33m[...][0m	: signal/09[1A
+[K[0;32m[OK][0m	: signal/09
+[0;33m[...][0m	: simple_quote/1[1A
+[K[0;32m[OK][0m	: simple_quote/1
+[0;33m[...][0m	: simple_quote/10[1A
+[K[0;32m[OK][0m	: simple_quote/10
+[0;33m[...][0m	: simple_quote/2[1A
+[K[0;32m[OK][0m	: simple_quote/2
+[0;33m[...][0m	: simple_quote/3[1A
+[K[0;32m[OK][0m	: simple_quote/3
+[0;33m[...][0m	: simple_quote/4[1A
+[K[0;32m[OK][0m	: simple_quote/4
+[0;33m[...][0m	: simple_quote/5[1A
+[K[0;32m[OK][0m	: simple_quote/5
+[0;33m[...][0m	: test/01[1A
+[K[0;32m[OK][0m	: test/01
+[0;33m[...][0m	: test/02[1A
+[K[0;32m[OK][0m	: test/02
+[0;33m[...][0m	: test/03[1A
+[K[0;32m[OK][0m	: test/03
+[0;33m[...][0m	: test/04[1A
+[K[0;32m[OK][0m	: test/04
+[0;33m[...][0m	: test/05[1A
+[K[1;31m[KO][0m	: test/05
+    test 4 5 6 4 2
+[0;37m[0;35m    1c1,51
+    < bash: line 1: test: too many arguments
+    ---
+    > =================================================================
+    > ==25074==ERROR: AddressSanitizer: global-buffer-overflow on address 0x00010bcb9890 at pc 0x00010bc2e3ed bp 0x7ffee3fd8e10 sp 0x7ffee3fd8e08
+    > READ of size 8 at 0x00010bcb9890 thread T0
+    >     #0 0x10bc2e3ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x10bc2d6c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x10bc2d0e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x10bc5d034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x10bc73c4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x10bc5d2dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x10bc6153e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x10bc60f8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x10bc5709f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x10bc56daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x00010bcb9890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x10bcb98c0) of size 24
+    > 0x00010bcb9890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x10bcb97e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x1000217972c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x1000217972d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x1000217972e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x1000217972f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021797300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x100021797310: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x100021797320: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x100021797330: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x100021797340: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x100021797350: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021797360: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25074==ABORTING
+[0;36m    bash --posix retuned 2
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/06[1A
+[K[0;32m[OK][0m	: test/06
+[0;33m[...][0m	: test/07[1A
+[K[1;31m[KO][0m	: test/07
+    test 8 -gt 3
+[0;37m[0;35m    0a1,51
+    > =================================================================
+    > ==25117==ERROR: AddressSanitizer: global-buffer-overflow on address 0x00010d43c890 at pc 0x00010d3b13ed bp 0x7ffee2855e10 sp 0x7ffee2855e08
+    > READ of size 8 at 0x00010d43c890 thread T0
+    >     #0 0x10d3b13ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x10d3b06c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x10d3b00e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x10d3e0034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x10d3f6c4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x10d3e02dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x10d3e453e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x10d3e3f8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x10d3da09f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x10d3d9daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x00010d43c890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x10d43c8c0) of size 24
+    > 0x00010d43c890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x10d43c7e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x100021a878c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021a878d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021a878e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021a878f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021a87900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x100021a87910: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x100021a87920: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x100021a87930: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x100021a87940: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x100021a87950: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021a87960: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25117==ABORTING
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/08[1A
+[K[1;31m[KO][0m	: test/08
+    test -Z ls
+[0;37m[0;35m    1c1,51
+    < bash: line 1: test: -Z: unary operator expected
+    ---
+    > =================================================================
+    > ==25139==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000106a54890 at pc 0x0001069c93ed bp 0x7ffee923de30 sp 0x7ffee923de28
+    > READ of size 8 at 0x000106a54890 thread T0
+    >     #0 0x1069c93ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x1069c86c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x1069c80e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x1069f8034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x106a0ec4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x1069f82dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x1069fc53e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x1069fbf8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x1069f209f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x1069f1daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x000106a54890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x106a548c0) of size 24
+    > 0x000106a54890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x106a547e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x100020d4a8c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020d4a8d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020d4a8e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020d4a8f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020d4a900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x100020d4a910: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x100020d4a920: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x100020d4a930: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x100020d4a940: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x100020d4a950: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020d4a960: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25139==ABORTING
+[0;36m    bash --posix retuned 2
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/09[1A
+[K[1;31m[KO][0m	: test/09
+    test 3vc -efds fd
+[0;37m[0;35m    1c1,51
+    < bash: line 1: test: -efds: binary operator expected
+    ---
+    > =================================================================
+    > ==25161==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000108327890 at pc 0x00010829c3ed bp 0x7ffee796ae10 sp 0x7ffee796ae08
+    > READ of size 8 at 0x000108327890 thread T0
+    >     #0 0x10829c3ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x10829b6c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x10829b0e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x1082cb034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x1082e1c4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x1082cb2dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x1082cf53e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x1082cef8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x1082c509f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x1082c4daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x000108327890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x1083278c0) of size 24
+    > 0x000108327890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x1083277e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x100021064ec0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021064ed0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021064ee0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021064ef0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021064f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x100021064f10: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x100021064f20: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x100021064f30: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x100021064f40: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x100021064f50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100021064f60: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25161==ABORTING
+[0;36m    bash --posix retuned 2
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/10[1A
+[K[1;31m[KO][0m	: test/10
+    test 3 -h 4
+[0;37m[0;35m    1c1,51
+    < bash: line 1: test: -h: binary operator expected
+    ---
+    > =================================================================
+    > ==25192==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000106574890 at pc 0x0001064e93ed bp 0x7ffee971de10 sp 0x7ffee971de08
+    > READ of size 8 at 0x000106574890 thread T0
+    >     #0 0x1064e93ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x1064e86c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x1064e80e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x106518034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x10652ec4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x1065182dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x10651c53e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x10651bf8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x10651209f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x106511daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x000106574890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x1065748c0) of size 24
+    > 0x000106574890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x1065747e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x100020cae8c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020cae8d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020cae8e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020cae8f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020cae900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x100020cae910: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x100020cae920: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x100020cae930: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x100020cae940: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x100020cae950: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x100020cae960: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25192==ABORTING
+[0;36m    bash --posix retuned 2
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/11[1A
+[K[0;32m[OK][0m	: test/11
+[0;33m[...][0m	: test/12[1A
+[K[0;32m[OK][0m	: test/12
+[0;33m[...][0m	: test/13[1A
+[K[0;32m[OK][0m	: test/13
+[0;33m[...][0m	: test/14[1A
+[K[0;32m[OK][0m	: test/14
+[0;33m[...][0m	: test/15[1A
+[K[0;32m[OK][0m	: test/15
+[0;33m[...][0m	: test/16[1A
+[K[0;32m[OK][0m	: test/16
+[0;33m[...][0m	: test/17[1A
+[K[0;32m[OK][0m	: test/17
+[0;33m[...][0m	: test/18[1A
+[K[1;31m[KO][0m	: test/18
+    socketfile=/var/run/cupsd
+    test -S ${socketfile} && echo ok || echo wrong
+    test -S /dev/null && echo ok || echo wrong
+[0;37m    1c1
+    < ok
+    ---
+    > wrong
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: test/19[1A
+[K[1;31m[KO][0m	: test/19
+    touch emptyfile; echo "not empty" > notempty
+    test -s emptyfile && echo ok || echo wrong
+    test -s notempty && echo ok || echo wrong
+[0;37m    2c2
+    < ok
+    ---
+    > wrong
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: test/20[1A
+[K[1;31m[KO][0m	: test/20
+    a='hello' b=''; unset c
+    test ${a} && echo ok || echo wrong
+    test ${b} && echo ok || echo wrong
+    test ${c} && echo ok || echo wrong
+    test -z ${a} && echo ok || echo wrong
+    test -z ${b} && echo ok || echo wrong
+    test -z ${c} && echo ok || echo wrong
+[0;37m    1a2
+    > ok
+    6d6
+    < ok
+[0;35m[0;36m[0;34m[0m[0;33m[...][0m	: test/21[1A
+[K[0;32m[OK][0m	: test/21
+[0;33m[...][0m	: test/22[1A
+[K[1;31m[KO][0m	: test/22
+    test 0 -eq 1 && echo ok || echo wrong
+    test -1 -eq 1 && echo ok || echo wrong
+    test -1 -eq -1 && echo ok || echo wrong
+    first='12' second='34'
+    test ${first} -ne ${second} && echo ok || echo wrong
+    test -1 -gt -2 && echo ok || echo wrong
+    test 2 -ge 2 && echo ok || echo wrong
+    test -2 -lt -2 && echo ok || echo wrong
+    test 3 -le +2 && echo ok || echo wrong
+[0;37m    4,7d3
+    < ok
+    < ok
+    < ok
+    < wrong
+[0;35m    0a1,52
+    > 42sh: test: first: integer expression expected
+    > =================================================================
+    > ==25366==ERROR: AddressSanitizer: global-buffer-overflow on address 0x00010c1d7890 at pc 0x00010c14c3ed bp 0x7ffee3abae10 sp 0x7ffee3abae08
+    > READ of size 8 at 0x00010c1d7890 thread T0
+    >     #0 0x10c14c3ec in get_opt_test (42sh:x86_64+0x1000083ec)
+    >     #1 0x10c14b6c9 in parse_testblt (42sh:x86_64+0x1000076c9)
+    >     #2 0x10c14b0e2 in builtin_test (42sh:x86_64+0x1000070e2)
+    >     #3 0x10c17b034 in call_builtin (42sh:x86_64+0x100037034)
+    >     #4 0x10c191c4f in launch_blt (42sh:x86_64+0x10004dc4f)
+    >     #5 0x10c17b2dc in launch_job (42sh:x86_64+0x1000372dc)
+    >     #6 0x10c17f53e in handle_background_job (42sh:x86_64+0x10003b53e)
+    >     #7 0x10c17ef8c in task_master (42sh:x86_64+0x10003af8c)
+    >     #8 0x10c17509f in load_noi_mode (42sh:x86_64+0x10003109f)
+    >     #9 0x10c174daf in main (42sh:x86_64+0x100030daf)
+    >     #10 0x7fff75ea93d4 in start (libdyld.dylib:x86_64+0x163d4)
+    > 
+    > 0x00010c1d7890 is located 48 bytes to the left of global variable 'fill' defined in 'srcs/builtins/hash/hash_dispatcher.c:19:18' (0x10c1d78c0) of size 24
+    > 0x00010c1d7890 is located 0 bytes to the right of global variable 'op' defined in 'srcs/builtins/test.c:17:15' (0x10c1d77e0) of size 176
+    > SUMMARY: AddressSanitizer: global-buffer-overflow (42sh:x86_64+0x1000083ec) in get_opt_test
+    > Shadow bytes around the buggy address:
+    >   0x10002183aec0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x10002183aed0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x10002183aee0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x10002183aef0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x10002183af00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    > =>0x10002183af10: 00 00[f9]f9 f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9
+    >   0x10002183af20: 00 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+    >   0x10002183af30: 00 00 00 00 00 00 00 00 f9 f9 f9 f9 00 00 00 00
+    >   0x10002183af40: 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9 f9 f9
+    >   0x10002183af50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    >   0x10002183af60: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+    > Shadow byte legend (one shadow byte represents 8 application bytes):
+    >   Addressable:           00
+    >   Partially addressable: 01 02 03 04 05 06 07 
+    >   Heap left redzone:       fa
+    >   Freed heap region:       fd
+    >   Stack left redzone:      f1
+    >   Stack mid redzone:       f2
+    >   Stack right redzone:     f3
+    >   Stack after return:      f5
+    >   Stack use after scope:   f8
+    >   Global redzone:          f9
+    >   Global init order:       f6
+    >   Poisoned by user:        f7
+    >   Container overflow:      fc
+    >   Array cookie:            ac
+    >   Intra object redzone:    bb
+    >   ASan internal:           fe
+    >   Left alloca redzone:     ca
+    >   Right alloca redzone:    cb
+    >   Shadow gap:              cc
+    > ==25366==ABORTING
+[0;36m    bash --posix retuned 0
+    /Users/arsciand/42/42sh/42sh retured 134
+[0;34m[0m[0;33m[...][0m	: test/23[1A
+[K[0;32m[OK][0m	: test/23

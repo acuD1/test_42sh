@@ -1,0 +1,2 @@
+42sh: export: -D: invalid option
+export: usage: unset [name ...]
